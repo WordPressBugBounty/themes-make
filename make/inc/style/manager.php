@@ -70,7 +70,7 @@ final class MAKE_Style_Manager extends MAKE_Util_Modules implements MAKE_Style_M
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Module defaults.
 		$modules = wp_parse_args( $modules, array(
 			'helper' => 'MAKE_Style_DataHelper',

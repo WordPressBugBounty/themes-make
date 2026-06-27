@@ -19,7 +19,7 @@ final class MAKE_Integration_Manager extends MAKE_Util_Modules implements MAKE_I
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		parent::__construct( $api, $modules );
 
 		// Jetpack

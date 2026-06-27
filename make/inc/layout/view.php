@@ -462,7 +462,7 @@ final class MAKE_Layout_View extends MAKE_Util_Modules implements MAKE_Layout_Vi
 	 *
 	 * @return false|string
 	 */
-	private function get_parent_post_type( WP_Post $post = null ) {
+	private function get_parent_post_type( ?WP_Post $post = null ) {
 		if ( is_null( $post ) ) {
 			return false;
 		} else {

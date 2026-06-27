@@ -4,7 +4,7 @@ Contributors: thethemefoundry
 Tags: black, blue, green, gray, orange, red, white, yellow, dark, light, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, grid-layout, buddypress, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, footer-widgets, blog, e-commerce, portfolio, accessibility-ready, custom-logo, featured-image-header, rtl-language-support
 
 Requires at least: 4.7
-Tested up to: 6.7.1
+Tested up to: 7.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,11 @@ Build a website that means business. With Make’s powerful drag and drop page b
 Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
+
+= 1.10.10 - June 25 2026 =
+* Update: Compatibility with WordPress 7.0
+* Bugfix: Added explicit nullable type hints (`?Type`) to constructors and methods in the admin notice, compatibility, customizer, error, font, integration, layout, logo, style and util modules to silence PHP 8.4 deprecation notices.
+* Bugfix: Deferred registration of the Generic and Google font sources from the Font Manager constructor to its load routine, fixing the `_load_textdomain_just_in_time` notice for the `make` text domain on WordPress 6.7+.
 
 = 1.10.9 - December 16 2024 =
 * New feature: Added a new Wide - Site Layout option for the Global Layout Settings.

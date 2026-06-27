@@ -51,7 +51,7 @@ final class MAKE_Logo_Methods extends MAKE_Util_Modules implements MAKE_Logo_Met
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Module defaults.
 		$modules = wp_parse_args( $modules, array(
 			'legacy' => 'MAKE_Logo_Legacy',

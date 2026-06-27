@@ -41,7 +41,7 @@ final class MAKE_Integration_YoastSEO extends MAKE_Util_Modules implements MAKE_
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// The Customizer Controls module only exists in a Customizer context.
 		if ( ! $api->has_module( 'customizer_controls' ) ) {
 			unset( $this->dependencies['customizer_controls'] );

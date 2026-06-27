@@ -33,6 +33,15 @@ class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerIn
 	private $loaded = false;
 
 	/**
+	 * Reference to the API instance, used to construct font sources lazily.
+	 *
+	 * @since 1.7.0.
+	 *
+	 * @var MAKE_APIInterface|null
+	 */
+	private $api = null;
+
+	/**
 	 * MAKE_Font_Manager constructor.
 	 *
 	 * @since 1.7.0.
@@ -40,15 +49,15 @@ class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerIn
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Load dependencies.
 		parent::__construct( $api, $modules );
 
-		// Generic font source
-		$this->add_source( 'generic', new MAKE_Font_Source_Generic( $api ) );
-
-		// Google font source
-		$this->add_source( 'google', new MAKE_Font_Source_Google( $api ) );
+		// Stash the API reference so the default font sources can be registered
+		// lazily in load(). Registering them here would translate their labels
+		// before the 'make' text domain is loaded (after_setup_theme, priority 1),
+		// triggering the _load_textdomain_just_in_time notice added in WP 6.7.
+		$this->api = $api;
 	}
 
 	/**
@@ -65,6 +74,12 @@ class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerIn
 
 		// Loading has occurred.
 		$this->loaded = true;
+
+		// Register the default font sources. This runs on first access to font
+		// data (well after the 'init' action), so their translated labels resolve
+		// after the 'make' text domain has been loaded.
+		$this->add_source( 'generic', new MAKE_Font_Source_Generic( $this->api ) );
+		$this->add_source( 'google', new MAKE_Font_Source_Google( $this->api ) );
 
 		/**
 		 * Action: Fires at the end of the font object's load method.
@@ -133,6 +148,10 @@ class MAKE_Font_Manager extends MAKE_Util_Modules implements MAKE_Font_ManagerIn
 	 * @return MAKE_Font_Source_BaseInterface|null
 	 */
 	public function get_source( $source_id ) {
+		if ( ! $this->is_loaded() ) {
+			$this->load();
+		}
+
 		if ( $this->has_source( $source_id ) ) {
 			$module_name = 'source_' . $source_id;
 			return parent::get_module( $module_name );

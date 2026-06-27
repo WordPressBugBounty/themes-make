@@ -66,7 +66,7 @@ final class MAKE_Font_Source_Google extends MAKE_Font_Source_Base implements MAK
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Parent constructor.
 		parent::__construct(
 			'google',

@@ -84,7 +84,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		if ( is_child_theme() && is_admin() ) {
 			// Module defaults.
 			$modules = wp_parse_args( $modules, array(
@@ -205,7 +205,7 @@ final class MAKE_Compatibility_Methods extends MAKE_Util_Modules implements MAKE
 	 *
 	 * @return void
 	 */
-	public function load_modules( MAKE_APIInterface $api = null ) {
+	public function load_modules( ?MAKE_APIInterface $api = null ) {
 		// Load the hook prefixer
 		if ( true === $this->mode['hookprefixer'] ) {
 			$this->add_module( 'hookprefixer', new MAKE_Compatibility_HookPrefixer( $api ) );

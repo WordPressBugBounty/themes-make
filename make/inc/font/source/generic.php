@@ -30,7 +30,7 @@ final class MAKE_Font_Source_Generic extends MAKE_Font_Source_Base {
 	 * @param MAKE_APIInterface $api
 	 * @param array             $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Parent constructor.
 		parent::__construct(
 			'generic',

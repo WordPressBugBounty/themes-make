@@ -173,7 +173,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return bool                    True if the admin notice was successfully registered.
 	 */
-	public function register_one_time_admin_notice( $message, WP_User $user = null, array $args = array() ) {
+	public function register_one_time_admin_notice( $message, ?WP_User $user = null, array $args = array() ) {
 		// Prep args
 		$defaults = array(
 			'dismiss' => true,   // Whether notice is dismissible
@@ -214,7 +214,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return array                An array of notices.
 	 */
-	private function get_one_time_admin_notices( WP_User $user = null ) {
+	private function get_one_time_admin_notices( ?WP_User $user = null ) {
 		$id = $this->generate_one_time_admin_notice_id( $user );
 
 		$notices = get_transient( $id );
@@ -236,7 +236,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return string               The generated ID.
 	 */
-	private function generate_one_time_admin_notice_id( WP_User $user = null ) {
+	private function generate_one_time_admin_notice_id( ?WP_User $user = null ) {
 		if ( is_null( $user ) ) {
 			$user = wp_get_current_user();
 		}
@@ -253,7 +253,7 @@ final class MAKE_Admin_Notice implements MAKE_Admin_NoticeInterface, MAKE_Util_H
 	 *
 	 * @return array                     Array of notices to display on the specified screen.
 	 */
-	private function get_notices( WP_Screen $screen = null ) {
+	private function get_notices( ?WP_Screen $screen = null ) {
 		if ( is_null( $screen ) ) {
 			$screen = get_current_screen();
 		}

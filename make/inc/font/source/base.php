@@ -74,7 +74,7 @@ class MAKE_Font_Source_Base extends MAKE_Util_Modules implements MAKE_Font_Sourc
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( $id, $label, $data = array(), $priority = 10, MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( $id, $label, $data = array(), $priority = 10, ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Set properties
 		$this->id = $id;
 		$this->label = $label;

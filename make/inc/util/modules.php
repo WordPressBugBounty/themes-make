@@ -57,7 +57,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		if ( ! empty( $this->dependencies ) ) {
 			$this->load_dependencies( $api, $modules );
 		}
@@ -134,7 +134,7 @@ abstract class MAKE_Util_Modules implements MAKE_Util_ModulesInterface {
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	protected function load_dependencies( MAKE_APIInterface $api = null, array $modules = array() ) {
+	protected function load_dependencies( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		foreach ( $this->dependencies as $dependency_name => $dependency_type ) {
 			// Provided by modules array
 			if ( isset( $modules[ $dependency_name ] ) ) {

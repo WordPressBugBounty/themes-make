@@ -40,7 +40,7 @@ final class MAKE_Error_Collector extends MAKE_Util_Modules implements MAKE_Error
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		/**
 		 * Filter: Toggle for showing Make errors.
 		 *

@@ -73,7 +73,7 @@ final class MAKE_Customizer_Controls extends MAKE_Util_Modules implements MAKE_C
 	 * @param MAKE_APIInterface|null $api
 	 * @param array                  $modules
 	 */
-	public function __construct( MAKE_APIInterface $api = null, array $modules = array() ) {
+	public function __construct( ?MAKE_APIInterface $api = null, array $modules = array() ) {
 		// Module defaults.
 		$modules = wp_parse_args( $modules, array(
 			'helper' => 'MAKE_Customizer_DataHelper',

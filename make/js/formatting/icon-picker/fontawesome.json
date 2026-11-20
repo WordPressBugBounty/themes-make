@@ -11632,7 +11632,7 @@
     ],
     "unicode": "f159"
   },
-  "wordpress": {
+  "wordpress-logo": {
     "id": "fa-wordpress",
     "label": "WordPress Logo",
     "style": [
@@ -11642,7 +11642,7 @@
   },
   "wordpress-simple": {
     "id": "fa-wordpress-simple",
-    "label": "Wordpress Simple",
+    "label": "WordPress Simple",
     "style": [
       "brands"
     ],

@@ -26,6 +26,10 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 == Changelog ==
 
+= 1.10.11 - November 20 2026 =
+* Security: Fixed a reflected cross-site scripting vulnerability (CVE-2026-125837). Customizer preview values sent with a request are now only applied for users who can edit theme options and only with a valid nonce.
+* Security: Escaped the search field placeholder and the mobile menu label on output.
+
 = 1.10.10 - June 25 2026 =
 * Update: Compatibility with WordPress 7.0
 * Bugfix: Added explicit nullable type hints (`?Type`) to constructors and methods in the admin notice, compatibility, customizer, error, font, integration, layout, logo, style and util modules to silence PHP 8.4 deprecation notices.
@@ -193,7 +197,7 @@ Please see the Make documentation: https://thethemefoundry.com/make-help/
 
 = 1.8.11 - August 4 2017 =
 * Bug fix: Screen reader text was causing horizontal scrolling in Firefox.
-* Bug fix: The format overlay wasn't appearing on Wordpress 4.8.1.
+* Bug fix: The format overlay wasn't appearing on WordPress 4.8.1.
 
 = 1.8.10 - June 10 2017 =
 * Bug fix: Fixed site navigation menu float styles.

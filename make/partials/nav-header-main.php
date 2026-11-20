@@ -6,7 +6,7 @@
 
 <nav id="site-navigation" class="site-navigation" role="navigation">
 	<?php if ( 'primary' === $mobile_menu ): ?>
-		<button class="menu-toggle"><?php echo make_get_thememod_value( 'navigation-mobile-label' ); ?></button>
+		<button class="menu-toggle"><?php echo esc_html( make_get_thememod_value( 'navigation-mobile-label' ) ); ?></button>
 	<?php endif;?>
 	<?php
 	$nav_menu_container_class = 'primary' === $mobile_menu ? ' mobile-menu': 'desktop-menu';

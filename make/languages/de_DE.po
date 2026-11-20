@@ -1926,7 +1926,7 @@ msgstr ""
 "Make ist responsive: Ihre Website passt sich daher jedem Endger&auml;t an. "
 "Daher sieht Ihre Website immer gut aus, egal ob sie auf Smart Phones, "
 "Tablets, Laptops oder Deskop-Bildschirmen aufgerufen wird. Das Make-Theme "
-"ist dar&uuml;ber hinaus kompatibel mit den beliebtesten Wordpress-Plugins "
+"ist dar&uuml;ber hinaus kompatibel mit den beliebtesten WordPress-Plugins "
 "wie z.B. WooCommerce, Gravity Forms, Contact Form 7, Jetpack und WP PageNavi."
 
 #. Author of the plugin/theme

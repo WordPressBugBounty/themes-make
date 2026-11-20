@@ -22,6 +22,7 @@
 	 * - webfonturl
 	 * - fontSettings
 	 * - styleSettings
+	 * - nonce
 	 */
 
 	// Shared functionality
@@ -102,6 +103,7 @@
 				data = {
 					action: "make-css-inline",
 					"make-preview": self.getStylesValues(self.styleSettings),
+					"make-preview-nonce": self.nonce,
 				};
 
 			self.sendRequest(data, function (response) {
@@ -152,6 +154,7 @@
 				data = {
 					action: "make-font-json",
 					"make-preview": self.getFontValues(self.fontSettings),
+					"make-preview-nonce": self.nonce,
 				};
 
 			self.sendRequest(data, function (response) {

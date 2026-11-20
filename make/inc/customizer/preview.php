@@ -113,6 +113,7 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 			'webfonturl'    => esc_url( $this->scripts()->get_url( 'web-font-loader', 'script' ) ),
 			'fontSettings'  => array_keys( $this->thememod()->get_settings( 'is_font' ), true ),
 			'styleSettings' => array_keys( $this->thememod()->get_settings( 'is_style' ), true ),
+			'nonce'         => wp_create_nonce( 'make-preview' ),
 		);
 
 		wp_localize_script(
@@ -133,7 +134,7 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 	 * @return void
 	 */
 	public function preview_thememods() {
-		if ( ! isset( $_POST['make-preview'] ) ) {
+		if ( ! $this->is_valid_preview_request() ) {
 			return;
 		}
 
@@ -156,7 +157,7 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 	 * @return mixed
 	 */
 	public function preview_thememod_value( $value ) {
-		if ( ! isset( $_POST['make-preview'] ) ) {
+		if ( ! $this->is_valid_preview_request() ) {
 			return $value;
 		}
 
@@ -168,6 +169,28 @@ final class MAKE_Customizer_Preview extends MAKE_Util_Modules implements MAKE_Cu
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Check that the current request may override theme mod values with preview data.
+	 *
+	 * Preview values come straight from the request, so only honor them for users who can
+	 * edit theme options and who sent a valid nonce from the Customizer preview pane.
+	 *
+	 * @since 1.10.11.
+	 *
+	 * @return bool
+	 */
+	private function is_valid_preview_request() {
+		if ( ! isset( $_POST['make-preview'], $_POST['make-preview-nonce'] ) ) {
+			return false;
+		}
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return false;
+		}
+
+		return false !== wp_verify_nonce( sanitize_key( wp_unslash( $_POST['make-preview-nonce'] ) ), 'make-preview' );
 	}
 
 	/**
